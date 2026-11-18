@@ -92,7 +92,7 @@
         return function () { var i = subs.indexOf(fn); if (i >= 0) subs.splice(i, 1); };
       },
       connected: function () { return open; },
-      leave: function () { send({ t: "leave", room: key }); delete rooms[key]; subs = []; handlers = {}; }
+      leave: function () { send({ t: "leave", room: key }); delete rooms[key]; subs = []; handlers = {}; return Promise.resolve(); }
     };
     room._others = function (list) { others = list || []; changed(); };
     room._changed = changed;
